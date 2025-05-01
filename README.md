@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🥗 ChowCart – Meal Planning Made Simple
+🎯 What It Is:
+ChowCart is a modern meal planning app that helps users search for recipes, organize meals across a weekly calendar, and generate smart grocery lists — all in one clean, responsive interface.
 
-## Getting Started
+It’s designed to make home cooking easier, faster, and more organized.
 
-First, run the development server:
+🧩 Core Features:
+🍳 Recipe Search & Discovery
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Browse or search for recipes by name, ingredients, or category
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+See cook time, ingredients, and instructions
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🗓️ Weekly Meal Planner
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Drag & drop meals into a calendar view (breakfast, lunch, dinner slots)
 
-## Learn More
+Build plans for the full week at a glance
 
-To learn more about Next.js, take a look at the following resources:
+🛒 Auto-Generated Grocery List
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Instantly create a shopping list based on the meals you’ve planned
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Organized by ingredient category (produce, dairy, etc.)
 
-## Deploy on Vercel
+Check off items as you shop
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+❤️ Favorites & Saved Recipes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Save favorite meals for quick access
+
+Add them to future plans with one click
+
+👤 (Optional) User Accounts
+
+Login/signup to sync your meal plans across devices (using Firebase)
