@@ -5,11 +5,13 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Link from 'next/link' // Import Link from Next.js
 
 gsap.registerPlugin(ScrollTrigger)
 
 const MealCategoriesCarousel = () => {
   const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(true) // Loading state
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true },
     [
@@ -24,7 +26,7 @@ const MealCategoriesCarousel = () => {
   const progressBar = useRef(null)
   const sectionRef = useRef(null)
 
-  // Fetch categories
+  // Fetch categories inside useEffect to ensure it only runs on the client-side
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -39,11 +41,13 @@ const MealCategoriesCarousel = () => {
         }
       } catch (error) {
         console.error('Failed to fetch categories:', error)
+      } finally {
+        setLoading(false) //  loading to false after fetching
       }
     }
 
     fetchCategories()
-  }, [])
+  }, []) // This ensures it only runs on the client
 
   // Animate progress bar
   useEffect(() => {
@@ -59,7 +63,7 @@ const MealCategoriesCarousel = () => {
     updateProgressBar()
   }, [emblaApi])
 
-  // GSAP reveal
+  // GSAP reveal animation
   useEffect(() => {
     if (!sectionRef.current) return
 
@@ -90,23 +94,41 @@ const MealCategoriesCarousel = () => {
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-6">
-            {categories.map((cat, index) => (
-              <div
-                key={index}
-                className="category-card min-w-[200px] flex-shrink-0 bg-[#F1E7A3] rounded-2xl p-4 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
-              >
-                <div className="w-full h-32 rounded-xl overflow-hidden mb-4">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-center text-lg font-semibold text-[#5D5853]">
-                  {cat.name}
-                </h3>
-              </div>
-            ))}
+            {loading ? (
+              // Skeleton Loader (Placeholder for loading categories)
+              <>
+                {[...Array(5)].map((_, index) => (
+                  <div
+                    key={index}
+                    className="category-card min-w-[200px] flex-shrink-0 bg-[#F1E7A3] rounded-2xl p-4 shadow-lg animate-pulse"
+                  >
+                    <div className="w-full h-32 rounded-xl bg-gray-200 mb-4"></div>
+                    <div className="h-6 bg-gray-200 rounded w-2/3 mx-auto"></div>
+                  </div>
+                ))}
+              </>
+            ) : (
+              // Render actual categories after loading
+              categories.map((cat, index) => (
+                <Link
+                  key={index}
+                  href={`/categories/${cat.name.toLowerCase()}`} // Link to the category page
+                >
+                  <div className="category-card min-w-[200px] flex-shrink-0 bg-[#F1E7A3] rounded-2xl p-4 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105">
+                    <div className="w-full h-32 rounded-xl overflow-hidden mb-4">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-center text-lg font-semibold text-[#5D5853]">
+                      {cat.name}
+                    </h3>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
         </div>
 
