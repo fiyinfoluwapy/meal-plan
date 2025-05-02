@@ -3,6 +3,7 @@ import "./globals.css";
 import Navigation from "./components/navigation"; 
 import HeaderSection from "./components/headersection";
 import ServicesCarousel from "./components/servicescarousel";
+import GrowingTogetherSection from "./components/growtogether";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         <HeaderSection />
         <ServicesCarousel />
+        <GrowingTogetherSection />
         {children}
       </body>
     </html>
