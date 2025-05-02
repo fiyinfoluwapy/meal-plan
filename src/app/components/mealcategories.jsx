@@ -9,18 +9,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const MealCategoriesCarousel = () => {
-  const [mounted, setMounted] = useState(false)
   const [categories, setCategories] = useState([])
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [
+      Autoplay({
+        delay: 3000,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  )
+
   const progressBar = useRef(null)
   const sectionRef = useRef(null)
 
-  // Mount flag to prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Fetch data from MealDB API
+  // Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -57,7 +61,7 @@ const MealCategoriesCarousel = () => {
 
   // GSAP reveal
   useEffect(() => {
-    if (!mounted || !sectionRef.current) return
+    if (!sectionRef.current) return
 
     gsap.fromTo(
       sectionRef.current.querySelectorAll('.category-card'),
@@ -75,9 +79,7 @@ const MealCategoriesCarousel = () => {
         },
       }
     )
-  }, [mounted, categories])
-
-  if (!mounted) return null // Prevents hydration mismatch
+  }, [categories])
 
   return (
     <section ref={sectionRef} className="py-24 bg-white">
