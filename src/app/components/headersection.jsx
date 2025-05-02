@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import FloatingIcon from './floatingicon';
-import Button from './Button';
+import Button from './button';
 
 import {
   UtensilsIcon,
