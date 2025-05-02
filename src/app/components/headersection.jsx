@@ -67,7 +67,7 @@ const HeaderSection = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Your weekly <br />
                 <span className="text-[#E89434]">meal plan,</span> <br />
-                simplified
+                simplified<span className="text-[#E89434]">...</span>
               </h1>
               <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-xl">
                 Search recipes, plan your meals, and generate smart grocery lists—all in one place.
@@ -90,13 +90,13 @@ const HeaderSection = () => {
               <div className="floating-icon absolute top-5 left-10">
                 <FloatingIcon icon={UtensilsIcon} />
               </div>
-              <div className="floating-icon absolute top-24 left-32">
+              <div className="floating-icon absolute bottom-34 right-20">
                 <FloatingIcon icon={CakeIcon} />
               </div>
               <div className="floating-icon absolute top-32 right-10">
                 <FloatingIcon icon={ChefHatIcon} />
               </div>
-              <div className="floating-icon absolute bottom-24 right-32">
+              <div className="floating-icon absolute bottom-25 right-0">
                 <FloatingIcon icon={TimerIcon} />
               </div>
               <div className="floating-icon absolute bottom-10 left-16">
