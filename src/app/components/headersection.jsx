@@ -85,24 +85,25 @@ const HeaderSection = () => {
 
           {/* Right Content - Images + Background Icons */}
           <div className="relative w-full md:w-1/2 flex flex-wrap justify-center gap-6 z-20">
-            {/* Floating Icons (now behind images) */}
-            <div className="absolute inset-0 -z-10 pointer-events-none">
-              <div className="floating-icon absolute top-5 left-10">
+            {/* Floating Icons (now above the images but still decorative) */}
+            <div className="absolute inset-0 z-30 pointer-events-none">
+              <div className="floating-icon absolute top-4 left-6 md:top-2 md:left-4">
                 <FloatingIcon icon={UtensilsIcon} />
               </div>
-              <div className="floating-icon absolute bottom-34 right-20">
+              <div className="floating-icon absolute bottom-36 right-24 md:bottom-48 md:right-32">
                 <FloatingIcon icon={CakeIcon} />
               </div>
-              <div className="floating-icon absolute top-32 right-10">
+              <div className="floating-icon absolute top-24 right-6 md:top-20 md:right-10">
                 <FloatingIcon icon={ChefHatIcon} />
               </div>
-              <div className="floating-icon absolute bottom-25 right-0">
+              <div className="floating-icon absolute bottom-20 right-2 md:bottom-28 md:right-10">
                 <FloatingIcon icon={TimerIcon} />
               </div>
-              <div className="floating-icon absolute bottom-10 left-16">
+              <div className="floating-icon absolute bottom-8 left-10 md:bottom-12 md:left-16">
                 <FloatingIcon icon={HeartIcon} />
               </div>
             </div>
+
 
             {/* Staggered Images */}
             <img

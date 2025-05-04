@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Link from 'next/link' // Import Link from Next.js
+import Link from 'next/link' 
 
 gsap.registerPlugin(ScrollTrigger)
 

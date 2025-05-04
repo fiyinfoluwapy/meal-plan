@@ -1,15 +1,34 @@
-// src/app/categories/[category]/page.js
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-const CategoryPage = async ({ params }) => {
+const CategoryPage = ({ params }) => {
   const { category } = params
 
-  const res = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-  )
-  const data = await res.json()
-  const meals = data.meals || []
+  const [meals, setMeals] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      try {
+        const res = await fetch(
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        )
+        const data = await res.json()
+        setMeals(data.meals || [])
+      } catch (err) {
+        setError('Failed to fetch meals')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchMeals()
+  }, [category])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>{error}</div>
 
   return (
     <div className="min-h-screen bg-white py-12 px-4">
