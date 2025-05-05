@@ -5,6 +5,7 @@ import HeaderSection from "./components/headersection";
 import ServicesCarousel from "./components/servicescarousel";
 import GrowingTogetherSection from "./components/growtogether";
 import MealCategoriesCarousel from "./components/mealcategories";
+import { MealQuiz } from "./components/mealquiz";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <ServicesCarousel />
         <GrowingTogetherSection />
         <MealCategoriesCarousel />
+        <MealQuiz />
         {children}
       </body>
     </html>
